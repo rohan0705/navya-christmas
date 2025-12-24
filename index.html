@@ -3,13 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <title>Merry Christmas Navya ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
     body {
       margin: 0;
       height: 100vh;
-      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      background: linear-gradient(135deg, #ffb6c1, #ffd1dc);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -19,63 +19,54 @@
 
     .card {
       background: white;
-      padding: 30px;
+      padding: 30px 25px;
       border-radius: 22px;
       text-align: center;
       width: 90%;
       max-width: 360px;
-      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-      animation: pop 1s ease;
-      z-index: 2;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      animation: pop 0.9s ease;
     }
 
     @keyframes pop {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
+      from {
+        transform: scale(0.85);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
     }
 
     h1 {
       color: #e63946;
-      font-size: 26px;
       margin-bottom: 10px;
+      font-size: 26px;
     }
 
-    h2 {
-      color: #333;
-      font-size: 18px;
-      margin-bottom: 15px;
+    .heart {
+      font-size: 30px;
+      animation: beat 1.2s infinite;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
     }
 
     p {
-      font-size: 15px;
       color: #555;
+      font-size: 15px;
       line-height: 1.6;
+      margin: 12px 0;
     }
 
-    .from {
+    .signature {
       margin-top: 18px;
-      font-weight: bold;
       color: #e63946;
-    }
-
-    /* Floating hearts */
-    .heart {
-      position: absolute;
-      color: rgba(255, 0, 85, 0.6);
-      font-size: 18px;
-      animation: float 6s linear infinite;
-    }
-
-    @keyframes float {
-      0% {
-        transform: translateY(100vh) scale(0.5);
-        opacity: 0;
-      }
-      10% { opacity: 1; }
-      100% {
-        transform: translateY(-10vh) scale(1.2);
-        opacity: 0;
-      }
+      font-weight: 600;
+      font-size: 16px;
     }
   </style>
 </head>
@@ -83,41 +74,26 @@
 <body>
 
   <div class="card">
-    <h1>🎄 Merry Christmas Navya ❤️</h1>
-    <h2>My girl 🥹🫂💗</h2>
+    <h1>🎄 Merry Christmas Navya</h1>
+    <div class="heart">❤️</div>
 
     <p>
       Merry Christmas, my girl 🎄✨<br>
-      You’re my favorite gift every single day 💝<br><br>
-
-      Love you sooo much ❤️<br>
-      Thank you for being my happiness,<br>
-      my comfort, my everything 🥺💗
+      You’re my favorite gift every single day 💝
     </p>
 
-    <div class="from">
+    <p>
+      Love you sooo much ❤️<br>
+      Thank you for being my happiness,<br>
+      my comfort, my everything 🥹💗
+    </p>
+
+    <div class="signature">
       — Forever yours,<br>
       Rohan 💖
     </div>
   </div>
 
-  <!-- Floating hearts -->
-  <script>
-    function createHeart() {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "❤️";
-      heart.style.left = Math.random() * 100 + "vw";
-      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
-      document.body.appendChild(heart);
-
-      setTimeout(() => {
-        heart.remove();
-      }, 8000);
-    }
-
-    setInterval(createHeart, 400);
-  </script>
-
 </body>
 </html>
+
