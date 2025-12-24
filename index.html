@@ -1,144 +1,123 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Merry Christmas Navya ❤️</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>Merry Christmas Navya ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg,#ffdde1,#ee9ca7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Poppins', sans-serif;
-  overflow: hidden;
-}
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
 
-.card {
-  background: white;
-  padding: 30px;
-  border-radius: 22px;
-  text-align: center;
-  width: 90%;
-  max-width: 360px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
-  animation: pop 1.1s ease;
-  z-index: 2;
-}
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 22px;
+      text-align: center;
+      width: 90%;
+      max-width: 360px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: pop 1s ease;
+      z-index: 2;
+    }
 
-@keyframes pop {
-  from { transform: scale(0.6); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
+    @keyframes pop {
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
+    }
 
-h1 {
-  color: #e91e63;
-  animation: glow 2s infinite alternate;
-}
+    h1 {
+      color: #e63946;
+      font-size: 26px;
+      margin-bottom: 10px;
+    }
 
-@keyframes glow {
-  from { text-shadow: 0 0 5px #ff758f; }
-  to { text-shadow: 0 0 22px #ff758f; }
-}
+    h2 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
 
-p {
-  color: #444;
-  font-size: 16px;
-  line-height: 1.6;
-}
+    p {
+      font-size: 15px;
+      color: #555;
+      line-height: 1.6;
+    }
 
-/* Snow */
-.snow {
-  position: fixed;
-  top: -10px;
-  color: white;
-  animation: fall linear infinite;
-  opacity: 0.9;
-}
+    .from {
+      margin-top: 18px;
+      font-weight: bold;
+      color: #e63946;
+    }
 
-@keyframes fall {
-  to { transform: translateY(110vh); }
-}
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: rgba(255, 0, 85, 0.6);
+      font-size: 18px;
+      animation: float 6s linear infinite;
+    }
 
-/* Floating hearts */
-.heart {
-  position: fixed;
-  bottom: -20px;
-  color: #ff4d6d;
-  animation: floatUp linear infinite;
-  opacity: 0.6;
-}
-
-@keyframes floatUp {
-  to { transform: translateY(-120vh); opacity: 0; }
-}
-
-/* Music button */
-.music-btn {
-  display: inline-block;
-  margin-top: 15px;
-  padding: 12px 20px;
-  border-radius: 25px;
-  background: #e91e63;
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-}
-</style>
+    @keyframes float {
+      0% {
+        transform: translateY(100vh) scale(0.5);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      100% {
+        transform: translateY(-10vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="card">
-  <h1>Merry Christmas Navya 🎄✨</h1>
-  <p>
-    Merry Christmas, <b>my girl</b> 🎄✨<br><br>
-    You’re my favorite gift every day 🥹🫂💗<br><br>
-    <b>Love you sooo much ❤️</b><br><br>
-    Forever yours,<br>
-    <b>Rohan</b>
-  </p>
+  <div class="card">
+    <h1>🎄 Merry Christmas Navya ❤️</h1>
+    <h2>My girl 🥹🫂💗</h2>
 
-  <!-- 🎶 MUSIC BUTTON (GUARANTEED) -->
-  <a class="music-btn"
-     href="https://youtu.be/qZ4kV2u3z7c"
-     target="_blank">
-     🎶 Play *En Jeevan*
-  </a>
+    <p>
+      Merry Christmas, my girl 🎄✨<br>
+      You’re my favorite gift every single day 💝<br><br>
 
-  <p style="font-size:13px; opacity:0.7; margin-top:8px;">
-    (Tap & listen while reading this 💗)
-  </p>
-</div>
+      Love you sooo much ❤️<br>
+      Thank you for being my happiness,<br>
+      my comfort, my everything 🥺💗
+    </p>
 
-<script>
-// Snow
-for (let i = 0; i < 40; i++) {
-  let snow = document.createElement("div");
-  snow.className = "snow";
-  snow.innerHTML = "❄️";
-  snow.style.left = Math.random() * 100 + "vw";
-  snow.style.fontSize = Math.random() * 20 + 10 + "px";
-  snow.style.animationDuration = Math.random() * 5 + 5 + "s";
-  document.body.appendChild(snow);
-}
+    <div class="from">
+      — Forever yours,<br>
+      Rohan 💖
+    </div>
+  </div>
 
-// Floating hearts
-setInterval(() => {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "💗";
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.fontSize = Math.random() * 25 + 15 + "px";
-  h.style.animationDuration = Math.random() * 6 + 6 + "s";
-  document.body.appendChild(h);
-  setTimeout(() => h.remove(), 12000);
-}, 400);
-</script>
+  <!-- Floating hearts -->
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.remove();
+      }, 8000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
 
 </body>
-</html>  
+</html>
