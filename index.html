@@ -1,112 +1,118 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Merry Christmas Navya ❤️</title>
 
 <style>
-  body {
-    margin: 0;
-    height: 100vh;
-    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
-    overflow: hidden;
-  }
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+}
 
-  .card {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    text-align: center;
-    width: 90%;
-    max-width: 350px;
-    animation: pop 1s ease;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
-  }
+/* Card */
+.card {
+  background: white;
+  padding: 30px;
+  border-radius: 22px;
+  text-align: center;
+  width: 90%;
+  max-width: 360px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+  animation: pop 1.2s ease;
+  z-index: 2;
+}
 
-  h1 {
-    color: #e63946;
-    animation: glow 2s infinite alternate;
-  }
+@keyframes pop {
+  from { transform: scale(0.6); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
-  p {
-    color: #444;
-    font-size: 16px;
-    line-height: 1.6;
-  }
+h1 {
+  color: #e63946;
+  animation: glow 2s infinite alternate;
+}
 
-  .heart {
-    color: #ff4d6d;
-    font-size: 30px;
-    animation: beat 1s infinite;
-  }
+@keyframes glow {
+  from { text-shadow: 0 0 5px #ff758f; }
+  to { text-shadow: 0 0 22px #ff758f; }
+}
 
-  @keyframes beat {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.2); }
-  }
+p {
+  color: #444;
+  font-size: 16px;
+  line-height: 1.6;
+}
 
-  @keyframes pop {
-    from { transform: scale(0.5); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-  }
+/* Beating heart */
+.main-heart {
+  font-size: 34px;
+  animation: beat 1s infinite;
+  margin: 10px 0;
+}
 
-  @keyframes glow {
-    from { text-shadow: 0 0 5px #ff758f; }
-    to { text-shadow: 0 0 20px #ff758f; }
-  }
+@keyframes beat {
+  0%,100% { transform: scale(1); }
+  50% { transform: scale(1.25); }
+}
 
-  /* Snow */
-  .snow {
-    position: fixed;
-    top: -10px;
-    color: white;
-    animation: fall linear infinite;
-    opacity: 0.8;
-  }
+/* Snow */
+.snow {
+  position: fixed;
+  top: -10px;
+  color: white;
+  animation: fall linear infinite;
+  opacity: 0.9;
+}
 
-  @keyframes fall {
-    to {
-      transform: translateY(110vh);
-    }
-  }
+@keyframes fall {
+  to { transform: translateY(110vh); }
+}
 
-  /* Floating Hearts */
-  .floating-heart {
-    position: fixed;
-    bottom: -20px;
-    color: #ff4d6d;
-    animation: floatUp linear infinite;
-    opacity: 0.6;
-  }
+/* Floating hearts */
+.floating-heart {
+  position: fixed;
+  bottom: -20px;
+  color: #ff4d6d;
+  animation: floatUp linear infinite;
+  opacity: 0.6;
+}
 
-  @keyframes floatUp {
-    to {
-      transform: translateY(-120vh);
-      opacity: 0;
-    }
-  }
+@keyframes floatUp {
+  to { transform: translateY(-120vh); opacity: 0; }
+}
+
+/* Music button */
+.music-btn {
+  position: fixed;
+  bottom: 20px;
+  padding: 12px 22px;
+  border: none;
+  border-radius: 25px;
+  background: #ff4d6d;
+  color: white;
+  font-size: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+}
 </style>
 </head>
 
 <body>
 
-<!-- Romantic music -->
-<audio autoplay loop>
-  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_9c9b56e6a3.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Bell sound -->
-<audio autoplay>
-  <source src="https://cdn.pixabay.com/audio/2021/12/22/audio_2e5df0a8a7.mp3" type="audio/mpeg">
+<!-- Tamil romantic instrumental (En Jeevan vibe) -->
+<audio id="bgMusic" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/10/26/audio_1f7b0c6e68.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card">
   <h1>Merry Christmas Navya 🎄✨</h1>
-  <div class="heart">❤️</div>
+  <div class="main-heart">❤️</div>
   <p>
     Merry Christmas, <b>my girl</b> 🎄✨<br><br>
     You’re my favorite gift every day 🥹🫂💗<br><br>
@@ -117,28 +123,36 @@
   </p>
 </div>
 
-<script>
-  // Snow
-  for (let i = 0; i < 40; i++) {
-    let snow = document.createElement("div");
-    snow.className = "snow";
-    snow.innerHTML = "❄️";
-    snow.style.left = Math.random() * 100 + "vw";
-    snow.style.fontSize = Math.random() * 20 + 10 + "px";
-    snow.style.animationDuration = Math.random() * 5 + 5 + "s";
-    document.body.appendChild(snow);
-  }
+<!-- Tap to play music -->
+<button class="music-btn" onclick="playMusic()">🎶 Tap to Play Music</button>
 
-  // Floating hearts
-  for (let i = 0; i < 25; i++) {
-    let heart = document.createElement("div");
-    heart.className = "floating-heart";
-    heart.innerHTML = "💗";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 25 + 15 + "px";
-    heart.style.animationDuration = Math.random() * 6 + 6 + "s";
-    document.body.appendChild(heart);
-  }
+<script>
+// Play music (mobile safe)
+function playMusic() {
+  document.getElementById("bgMusic").play();
+}
+
+// Snowfall
+for (let i = 0; i < 40; i++) {
+  let snow = document.createElement("div");
+  snow.className = "snow";
+  snow.innerHTML = "❄️";
+  snow.style.left = Math.random() * 100 + "vw";
+  snow.style.fontSize = Math.random() * 20 + 10 + "px";
+  snow.style.animationDuration = Math.random() * 5 + 5 + "s";
+  document.body.appendChild(snow);
+}
+
+// Floating hearts
+for (let i = 0; i < 25; i++) {
+  let heart = document.createElement("div");
+  heart.className = "floating-heart";
+  heart.innerHTML = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 25 + 15 + "px";
+  heart.style.animationDuration = Math.random() * 6 + 6 + "s";
+  document.body.appendChild(heart);
+}
 </script>
 
 </body>
