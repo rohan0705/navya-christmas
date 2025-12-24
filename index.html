@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg,#ffdde1,#ee9ca7);
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,66 +28,86 @@ body {
 }
 
 @keyframes pop {
-  from { transform: scale(0); }
-  to { transform: scale(1); }
+  from { transform: scale(0.7); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
-h1 { color: #ff4d6d; }
-p { color: #444; font-size: 16px; }
-
-.heart {
-  position: fixed;
-  color: pink;
-  font-size: 20px;
-  animation: floatUp 6s linear infinite;
+h1 {
+  color: #e91e63;
 }
 
-@keyframes floatUp {
-  from { transform: translateY(100vh); opacity: 1; }
-  to { transform: translateY(-10vh); opacity: 0; }
+p {
+  font-size: 16px;
+  color: #444;
 }
 
 button {
-  margin-top: 15px;
+  margin-top: 20px;
   padding: 12px 20px;
+  font-size: 16px;
   border: none;
   border-radius: 25px;
-  background: #ff4d6d;
+  background: #e91e63;
   color: white;
-  font-size: 16px;
+}
+
+.heart {
+  position: absolute;
+  color: #ff4d6d;
+  font-size: 20px;
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
 }
 </style>
 </head>
 
-<body onclick="startMusic()">
+<body>
 
 <div class="card">
-  <h1>🎄 Merry Christmas, my girl 🎄</h1>
-  <p>You’re my favorite gift every day 🥹🫂💗</p>
-  <p>Love you sooo much Navya ❤️</p>
-  <p>— Forever yours, Rohan 💞</p>
-  <button>🎶 Tap Anywhere to Play Music</button>
+  <h1>🎄 Merry Christmas Navya ❤️</h1>
+  <p>
+    My girl 🎄✨<br>
+    You’re my favorite gift every day 🥹🫂💗<br><br>
+    Love you sooo much ❤️<br>
+    — Rohan
+  </p>
+  <button onclick="playMusic()">🎶 Tap to Play Music</button>
 </div>
 
-<audio id="music">
-  <source src="https://cdn.pixabay.com/audio/2022/11/14/audio_9f07bfa0bb.mp3" type="audio/mpeg">
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/10/16/audio_5c8a5fa66f.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function startMusic() {
-  const m = document.getElementById("music");
-  m.volume = 0.6;
-  m.play();
+function playMusic() {
+  const music = document.getElementById("music");
+  music.volume = 0.6;
+  music.play();
+  createHearts();
 }
 
-setInterval(() => {
-  const h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "💗";
-  h.style.left = Math.random()*100 + "vw";
-  document.body.appendChild(h);
-  setTimeout(() => h.remove(), 6000);
-}, 500);
+function createHearts() {
+  setInterval(() => {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerHTML = "💗";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = Math.random() * 20 + 15 + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 6000);
+  }, 300);
+}
 </script>
 
 </body>
