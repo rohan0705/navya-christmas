@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -88,22 +88,18 @@ p {
   to { transform: translateY(-120vh); opacity: 0; }
 }
 
-/* Music button */
-.music-btn {
+/* Tap hint */
+.tap-hint {
   position: fixed;
   bottom: 20px;
-  padding: 12px 22px;
-  border: none;
-  border-radius: 25px;
-  background: #ff4d6d;
+  font-size: 14px;
   color: white;
-  font-size: 16px;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+  opacity: 0.8;
 }
 </style>
 </head>
 
-<body>
+<body onclick="startMusic()">
 
 <!-- Tamil romantic instrumental (En Jeevan vibe) -->
 <audio id="bgMusic" loop>
@@ -123,13 +119,19 @@ p {
   </p>
 </div>
 
-<!-- Tap to play music -->
-<button class="music-btn" onclick="playMusic()">🎶 Tap to Play Music</button>
+<div class="tap-hint">👆 Tap anywhere to start music 🎶</div>
 
 <script>
-// Play music (mobile safe)
-function playMusic() {
-  document.getElementById("bgMusic").play();
+let musicStarted = false;
+
+// Start music on first tap anywhere
+function startMusic() {
+  if (!musicStarted) {
+    const music = document.getElementById("bgMusic");
+    music.play().catch(() => {});
+    musicStarted = true;
+    document.querySelector(".tap-hint").style.display = "none";
+  }
 }
 
 // Snowfall
