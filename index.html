@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -9,7 +9,7 @@
 body {
   margin: 0;
   height: 100vh;
-  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  background: linear-gradient(135deg,#ffdde1,#ee9ca7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,9 @@ body {
   text-align: center;
   width: 90%;
   max-width: 360px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
   animation: pop 1s ease;
+  z-index: 2;
 }
 
 @keyframes pop {
@@ -39,34 +41,19 @@ h1 {
 p {
   font-size: 16px;
   color: #444;
+  line-height: 1.6;
 }
 
-button {
-  margin-top: 20px;
-  padding: 12px 20px;
-  font-size: 16px;
-  border: none;
-  border-radius: 25px;
-  background: #e91e63;
-  color: white;
-}
-
+/* Floating hearts */
 .heart {
-  position: absolute;
+  position: fixed;
+  bottom: -20px;
   color: #ff4d6d;
-  font-size: 20px;
-  animation: float 6s linear infinite;
+  animation: floatUp linear infinite;
 }
 
-@keyframes float {
-  from {
-    transform: translateY(100vh);
-    opacity: 1;
-  }
-  to {
-    transform: translateY(-10vh);
-    opacity: 0;
-  }
+@keyframes floatUp {
+  to { transform: translateY(-120vh); opacity: 0; }
 }
 </style>
 </head>
@@ -75,39 +62,38 @@ button {
 
 <div class="card">
   <h1>🎄 Merry Christmas Navya ❤️</h1>
+
   <p>
-    My girl 🎄✨<br>
+    Merry Christmas, <b>my girl</b> 🎄✨<br><br>
     You’re my favorite gift every day 🥹🫂💗<br><br>
-    Love you sooo much ❤️<br>
-    — Rohan
+    <b>Love you sooo much ❤️</b><br><br>
+    Forever yours,<br>
+    <b>Rohan</b>
   </p>
-  <button onclick="playMusic()">🎶 Tap to Play Music</button>
+
+  <!-- ✅ GUARANTEED AUDIO -->
+  <audio controls style="width:100%; margin-top:15px;">
+    <source src="https://cdn.pixabay.com/audio/2022/10/16/audio_5c8a5fa66f.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <p style="font-size:13px; opacity:0.7;">
+    ▶️ Tap play to hear the music
+  </p>
 </div>
 
-<audio id="music" loop>
-  <source src="https://cdn.pixabay.com/audio/2022/10/16/audio_5c8a5fa66f.mp3" type="audio/mpeg">
-</audio>
-
 <script>
-function playMusic() {
-  const music = document.getElementById("music");
-  music.volume = 0.6;
-  music.play();
-  createHearts();
-}
-
-function createHearts() {
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "💗";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = Math.random() * 20 + 15 + "px";
-    document.body.appendChild(heart);
-
-    setTimeout(() => heart.remove(), 6000);
-  }, 300);
-}
+/* Floating hearts */
+setInterval(() => {
+  const h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "💗";
+  h.style.left = Math.random()*100 + "vw";
+  h.style.fontSize = Math.random()*20 + 15 + "px";
+  h.style.animationDuration = Math.random()*6 + 6 + "s";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 12000);
+}, 400);
 </script>
 
 </body>
