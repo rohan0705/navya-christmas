@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Merry Christmas Pune kutty❤️</title>
+  <title>Merry Christmas Navya ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <style>
@@ -17,6 +18,27 @@
       overflow: hidden;
     }
 
+    /* Floating Hearts */
+    .heart {
+      position: absolute;
+      bottom: -20px;
+      color: rgba(255, 0, 80, 0.6);
+      font-size: 18px;
+      animation: floatUp 8s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 0;
+      }
+      10% { opacity: 1; }
+      100% {
+        transform: translateY(-110vh) scale(1.6);
+        opacity: 0;
+      }
+    }
+
     .card {
       background: white;
       padding: 30px 25px;
@@ -26,6 +48,8 @@
       max-width: 360px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.15);
       animation: pop 0.9s ease;
+      position: relative;
+      z-index: 2;
     }
 
     @keyframes pop {
@@ -45,7 +69,7 @@
       font-size: 26px;
     }
 
-    .heart {
+    .main-heart {
       font-size: 30px;
       animation: beat 1.2s infinite;
     }
@@ -73,9 +97,22 @@
 
 <body>
 
+  <!-- Floating hearts -->
+  <script>
+    for (let i = 0; i < 25; i++) {
+      let heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "❤️";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (5 + Math.random() * 5) + "s";
+      heart.style.fontSize = (14 + Math.random() * 20) + "px";
+      document.body.appendChild(heart);
+    }
+  </script>
+
   <div class="card">
     <h1>🎄 Merry Christmas Navya</h1>
-    <div class="heart">❤️</div>
+    <div class="main-heart">❤️</div>
 
     <p>
       Merry Christmas, my girl 🎄✨<br>
