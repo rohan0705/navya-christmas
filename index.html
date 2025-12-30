@@ -1,74 +1,158 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>New Year Surprise 💖</title>
+<title>For My Love 💖</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: #fff0f5;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+  height: 100vh;
+  overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
 }
 
+/* Floating Hearts */
+.heart {
+  position: fixed;
+  bottom: -20px;
+  font-size: 18px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* Screens */
 .screen {
   display: none;
   text-align: center;
   padding: 20px;
+  animation: fadeIn 1s ease;
 }
 
-.active {
+.screen.active {
   display: block;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Cat */
+.cat {
+  font-size: 90px;
+  animation: bounce 1.6s infinite;
+}
+
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+
+h1, h2 {
+  color: #b8004c;
+}
+
+p {
+  color: #444;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Buttons */
 button {
-  padding: 12px 25px;
+  padding: 12px 28px;
   margin: 10px;
   border: none;
-  border-radius: 25px;
-  background: pink;
+  border-radius: 30px;
+  background: #ff4d6d;
+  color: white;
   font-size: 16px;
   cursor: pointer;
+}
+
+button:hover {
+  background: #e6004c;
 }
 </style>
 </head>
 
-<body>
+<body onclick="startMusic()">
+
+<!-- Background Music -->
+<audio id="bgm" loop>
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0c4b6bb3d3.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Floating hearts generator -->
+<script>
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💗";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (Math.random() * 20 + 14) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
+}
+setInterval(createHeart, 400);
+</script>
 
 <!-- SCREEN 1 -->
 <div class="screen active" id="s1">
-  <h2>Hi my love 💐</h2>
+  <div class="cat">🐱🌸</div>
+  <h2>Hi my love 💖</h2>
   <p>I got a surprise for you 🥹</p>
-  <button onclick="show('s2')">YES</button>
-  <button onclick="show('s3')">NO</button>
+  <button onclick="show('s3')">YES</button>
+  <button onclick="show('s2')">NO</button>
 </div>
 
-<!-- SCREEN 2 -->
+<!-- SCREEN 2 (NO) -->
 <div class="screen" id="s2">
-  <h1>🎆 Happy New Year my princess 👸</h1>
-  <p>I miss you a lot my love 💗</p>
-  <button onclick="show('s4')">NEXT</button>
-</div>
-
-<!-- SCREEN 3 -->
-<div class="screen" id="s3">
-  <h1>HOW DARE YOU 😾🔪</h1>
+  <div class="cat">😾</div>
+  <h2>HOW DARE YOU 😤</h2>
   <button onclick="show('s1')">TRY AGAIN</button>
 </div>
 
-<!-- SCREEN 4 -->
-<div class="screen" id="s4">
-  <h2>Our Best Memories 💞</h2>
-  <p>You mean everything to me 🫂</p>
+<!-- SCREEN 3 (YES) -->
+<div class="screen" id="s3">
+  <div class="cat">🐱💞</div>
+  <h1>Happy New Year My Love 🎆</h1>
+
+  <p>
+    Best memories are not pictures or places,<br>
+    they are every single moment I spent with you 🥺💗
+  </p>
+
+  <p>
+    I miss you a lot, my love 🫂<br>
+    Forever yours,<br>
+    <b>Rohan 💖</b>
+  </p>
 </div>
 
 <script>
-function show(id){
+let musicStarted = false;
+
+function startMusic() {
+  if (!musicStarted) {
+    document.getElementById("bgm").play().catch(()=>{});
+    musicStarted = true;
+  }
+}
+
+function show(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
 }
