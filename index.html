@@ -1,156 +1,132 @@
 
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Merry Christmas Navya ❤️</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy New Year Navya 💖</title>
 
 <style>
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
-  height: 100vh;
-  background: linear-gradient(135deg, #ffb6c1, #ffd1dc);
   font-family: 'Poppins', sans-serif;
-  overflow: hidden;
+  background: linear-gradient(135deg, #ffd6e8, #ffeef5);
+  height: 100vh;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
-/* Floating hearts */
-.heart {
-  position: absolute;
-  bottom: -20px;
-  font-size: 18px;
-  opacity: 0.7;
-  animation: floatUp linear infinite;
-}
-
-@keyframes floatUp {
-  from { transform: translateY(0); opacity: 1; }
-  to { transform: translateY(-120vh); opacity: 0; }
-}
-
-/* Cat screen */
-#catScreen {
-  text-align: center;
-  cursor: pointer;
-  animation: pop 1s ease;
-}
-
-.cat {
-  font-size: 80px;
-}
-
-.click-text {
-  margin-top: 10px;
-  font-size: 16px;
-  color: #fff;
-  animation: blink 1.4s infinite;
-}
-
-@keyframes blink {
-  50% { opacity: 0.4; }
-}
-
-/* Message card */
-.card {
+.screen {
   display: none;
-  background: white;
-  padding: 30px 25px;
-  border-radius: 22px;
   text-align: center;
-  width: 90%;
-  max-width: 360px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-  animation: pop 0.8s ease;
-  position: relative;
-  z-index: 2;
+  padding: 20px;
+}
+
+.screen.active {
+  display: block;
+}
+
+img {
+  max-width: 250px;
+  border-radius: 20px;
+}
+
+button {
+  margin: 15px;
+  padding: 12px 28px;
+  font-size: 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  background: #ff7aa2;
+  color: white;
+}
+
+button:hover {
+  background: #ff5c8a;
+}
+
+.fireworks {
+  background: black;
+  color: white;
+  height: 100vh;
+}
+
+.fireworks::before {
+  content: "🎆 🎇 🎆 🎇 🎆";
+  font-size: 40px;
+  display: block;
+  animation: pop 1s infinite alternate;
 }
 
 @keyframes pop {
-  from { transform: scale(0.85); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-
-h1 {
-  color: #e63946;
-  font-size: 26px;
-}
-
-.main-heart {
-  font-size: 30px;
-  animation: beat 1.2s infinite;
-}
-
-@keyframes beat {
-  50% { transform: scale(1.2); }
-}
-
-p {
-  color: #555;
-  font-size: 15px;
-  line-height: 1.6;
-  margin: 12px 0;
-}
-
-.signature {
-  margin-top: 18px;
-  color: #e63946;
-  font-weight: 600;
-  font-size: 16px;
+  from { transform: scale(1); }
+  to { transform: scale(1.2); }
 }
 </style>
 </head>
 
-<body>
+<body onclick="startMusic()">
 
-<!-- Floating hearts -->
-<script>
-for (let i = 0; i < 25; i++) {
-  let h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "❤️";
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.fontSize = (14 + Math.random() * 20) + "px";
-  h.style.animationDuration = (5 + Math.random() * 6) + "s";
-  document.body.appendChild(h);
-}
-</script>
+<audio id="bgm" src="music.mp3"></audio>
 
-<!-- Cat screen -->
-<div id="catScreen" onclick="revealMessage()">
-  <div class="cat">🐱</div>
-  <div class="click-text">Click me 🐾</div>
+<!-- Screen 1 -->
+<div class="screen active" id="s1">
+  <img src="flower_cat.png">
+  <h2>Hi my love 💗</h2>
+  <p>I got a surprise for you 🌸</p>
+  <button onclick="go(2)">YES</button>
+  <button onclick="go(3)">NO</button>
 </div>
 
-<!-- Message -->
-<div class="card" id="messageCard">
-  <h1>🎄 Merry Christmas Navya</h1>
-  <div class="main-heart">❤️</div>
+<!-- Screen 2 YES -->
+<div class="screen fireworks" id="s2">
+  <h1>Happy New Year<br>My Princess 👸✨</h1>
+  <button onclick="go(4)">NEXT</button>
+</div>
 
-  <p>
-    Merry Christmas, my girl 🎄✨<br>
-    You’re my favorite gift every single day 💝
-  </p>
+<!-- Screen 3 NO -->
+<div class="screen" id="s3">
+  <img src="knife_cat.png">
+  <h2>HOW DARE YOU 😤</h2>
+  <button onclick="go(1)">TRY AGAIN</button>
+</div>
 
+<!-- Screen 4 Memories -->
+<div class="screen" id="s4">
+  <h2>Our Best Memories 💕</h2>
+  <img src="memories.jpg">
+  <p>I miss you a lot my love 🥺💗</p>
+  <button onclick="go(5)">NEXT</button>
+</div>
+
+<!-- Screen 5 Final -->
+<div class="screen" id="s5">
+  <h2>Forever Us ♾️</h2>
   <p>
-    Love you sooo much ❤️<br>
+    Happy New Year my love 💖<br><br>
     Thank you for being my happiness,<br>
-    my comfort, my everything 🥹💗
+    my comfort, my everything 🫂<br><br>
+    Forever yours,<br>
+    <b>Rohan</b> 💞
   </p>
-
-  <div class="signature">
-    — Forever yours,<br>
-    Rohan 💖
-  </div>
 </div>
 
 <script>
-function revealMessage() {
-  document.getElementById("catScreen").style.display = "none";
-  document.getElementById("messageCard").style.display = "block";
+function go(n) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('s' + n).classList.add('active');
+}
+
+function startMusic() {
+  const audio = document.getElementById("bgm");
+  if (audio.paused) {
+    audio.play().catch(()=>{});
+  }
 }
 </script>
 
