@@ -2,15 +2,15 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For My Love v999</title>
+<title>For My Love vFINAL</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
   margin:0;
   height:100vh;
-  font-family:Arial, sans-serif;
-  background:linear-gradient(135deg,#ffd1dc,#ffeaf0);
+  font-family:'Poppins',sans-serif;
+  background:linear-gradient(135deg,#fde2e4,#fadadd);
   overflow:hidden;
   display:flex;
   justify-content:center;
@@ -22,61 +22,61 @@ body{
   display:none;
   text-align:center;
   padding:30px;
-  animation:fade 0.8s ease;
+  animation:fade 1s ease;
 }
 .screen.active{display:block;}
 
 @keyframes fade{
-  from{opacity:0;transform:scale(.95);}
-  to{opacity:1;transform:scale(1);}
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
 }
 
 /* buttons */
 .buttons{
   display:flex;
-  gap:15px;
+  gap:20px;
   justify-content:center;
-  margin-top:20px;
+  margin-top:25px;
 }
 button{
-  padding:12px 28px;
+  padding:12px 30px;
   border:none;
-  border-radius:25px;
+  border-radius:30px;
   background:#ff4d6d;
   color:white;
   font-size:16px;
   cursor:pointer;
 }
 
-/* floating hearts (shape, not emoji) */
+/* floating hearts */
 .heart{
   position:fixed;
   bottom:-20px;
-  width:14px;
-  height:14px;
+  width:12px;
+  height:12px;
   background:#ff4d6d;
   transform:rotate(45deg);
-  animation:float 6s linear infinite;
-  opacity:.7;
+  animation:float 7s linear infinite;
+  opacity:.5;
 }
 .heart:before,.heart:after{
   content:"";
   position:absolute;
-  width:14px;
-  height:14px;
+  width:12px;
+  height:12px;
   background:#ff4d6d;
   border-radius:50%;
 }
-.heart:before{top:-7px;left:0;}
-.heart:after{left:-7px;top:0;}
+.heart:before{top:-6px;left:0;}
+.heart:after{left:-6px;top:0;}
 
 @keyframes float{
   0%{transform:translateY(0) rotate(45deg);opacity:0;}
-  10%{opacity:1;}
+  10%{opacity:.6;}
   100%{transform:translateY(-110vh) rotate(45deg);opacity:0;}
 }
 
-/* fireworks */
+/* FIRECRACKERS / FIREWORKS */
 .fireworks{
   position:fixed;
   inset:0;
@@ -88,62 +88,38 @@ button{
   animation:boom 4s linear infinite;
   z-index:-1;
 }
+
 @keyframes boom{
   from{background-position:0 0,30px 30px,60px 60px;}
   to{background-position:400px 400px,430px 430px,460px 460px;}
 }
 
-/* animated cat (CSS) */
-.cat{
-  width:120px;
-  height:80px;
-  background:#333;
-  border-radius:40px;
-  margin:0 auto 20px;
-  position:relative;
-  animation:bounce 1.6s infinite;
-}
-.cat:before,.cat:after{
-  content:"";
-  position:absolute;
-  width:30px;height:30px;
-  background:#333;
-  top:-15px;
-  border-radius:6px;
-}
-.cat:before{left:15px;}
-.cat:after{right:15px;}
-
-@keyframes bounce{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-10px);}
-}
-
-/* couple */
+/* COUPLE HUGGING (SVG STYLE) */
 .couple{
-  width:160px;
-  height:80px;
-  margin:25px auto;
+  margin:30px auto;
+  width:180px;
+  height:120px;
   position:relative;
 }
-.couple div{
+.couple .person{
   width:70px;
-  height:70px;
+  height:100px;
   background:#444;
-  border-radius:50%;
+  border-radius:40px;
   position:absolute;
-  animation:cuddle 2s infinite;
+  top:0;
+  animation:hug 2s infinite ease-in-out;
 }
-.couple .a{left:0;}
-.couple .b{right:0;}
+.couple .left{left:20px;}
+.couple .right{right:20px;}
 
-@keyframes cuddle{
+@keyframes hug{
   0%,100%{transform:translateX(0);}
   50%{transform:translateX(6px);}
 }
 
 h1,h2{color:#b8004c;}
-p{color:#333;line-height:1.7;}
+p{color:#333;line-height:1.7;font-size:16px;}
 </style>
 </head>
 
@@ -154,14 +130,14 @@ p{color:#333;line-height:1.7;}
 </audio>
 
 <script>
-/* hearts */
+/* floating hearts */
 setInterval(()=>{
  let h=document.createElement("div");
  h.className="heart";
  h.style.left=Math.random()*100+"vw";
  document.body.appendChild(h);
- setTimeout(()=>h.remove(),6000);
-},450);
+ setTimeout(()=>h.remove(),7000);
+},600);
 
 function playMusic(){
  document.getElementById("bgm").play().catch(()=>{});
@@ -175,7 +151,6 @@ function show(id){
 
 <!-- SCREEN 1 -->
 <div class="screen active" id="s1">
- <div class="cat"></div>
  <h2>Hi my love</h2>
  <p>I got a surprise for you</p>
 
@@ -187,20 +162,23 @@ function show(id){
 
 <!-- SCREEN NO -->
 <div class="screen" id="sNo">
- <div class="cat"></div>
  <h2>How dare you 😤</h2>
+ <p>Okay okay… try again</p>
  <button onclick="show('s1')">Try Again</button>
 </div>
 
-<!-- SCREEN 2 -->
+<!-- SCREEN 2 : HAPPY NEW YEAR -->
 <div class="screen" id="s2">
  <div class="fireworks"></div>
  <h1>Happy New Year My Love</h1>
- <p>You make my life brighter every day</p>
+ <p>
+   May this year bring us closer,<br>
+   happier, and stronger together.
+ </p>
  <button onclick="show('s3')">NEXT</button>
 </div>
 
-<!-- SCREEN 3 -->
+<!-- SCREEN 3 : FINAL MESSAGE -->
 <div class="screen" id="s3">
  <p>
    I miss you so much.<br>
@@ -210,8 +188,8 @@ function show(id){
  </p>
 
  <div class="couple">
-   <div class="a"></div>
-   <div class="b"></div>
+   <div class="person left"></div>
+   <div class="person right"></div>
  </div>
 
  <p>
