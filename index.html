@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,15 +10,48 @@
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
   height: 100vh;
   overflow: hidden;
+  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-/* Floating Hearts */
+/* Screens */
+.screen {
+  display: none;
+  text-align: center;
+  padding: 25px;
+  animation: fadeIn 1s ease;
+}
+
+.screen.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Buttons */
+button {
+  padding: 12px 30px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 30px;
+  background: #ff4d6d;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #e6004c;
+}
+
+/* Hearts */
 .heart {
   position: fixed;
   bottom: -20px;
@@ -32,32 +66,22 @@ body {
   100% { transform: translateY(-110vh); opacity: 0; }
 }
 
-/* Screens */
-.screen {
-  display: none;
-  text-align: center;
-  padding: 20px;
-  animation: fadeIn 1s ease;
+/* Fireworks */
+.fireworks {
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle, rgba(255,255,255,0.6) 2px, transparent 3px),
+    radial-gradient(circle, rgba(255,215,0,0.8) 2px, transparent 3px),
+    radial-gradient(circle, rgba(255,0,120,0.7) 2px, transparent 3px);
+  background-size: 80px 80px;
+  animation: fireworks 4s linear infinite;
+  z-index: -1;
 }
 
-.screen.active {
-  display: block;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-/* Cat */
-.cat {
-  font-size: 90px;
-  animation: bounce 1.6s infinite;
-}
-
-@keyframes bounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
+@keyframes fireworks {
+  from { background-position: 0 0, 40px 40px, 80px 80px; }
+  to { background-position: 400px 400px, 440px 440px, 480px 480px; }
 }
 
 h1, h2 {
@@ -65,37 +89,16 @@ h1, h2 {
 }
 
 p {
-  color: #444;
+  color: #333;
   font-size: 16px;
-  line-height: 1.6;
-}
-
-/* Buttons */
-button {
-  padding: 12px 28px;
-  margin: 10px;
-  border: none;
-  border-radius: 30px;
-  background: #ff4d6d;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #e6004c;
+  line-height: 1.7;
 }
 </style>
 </head>
 
-<body onclick="startMusic()">
+<body>
 
-<!-- Background Music -->
-<audio id="bgm" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0c4b6bb3d3.mp3" type="audio/mpeg">
-</audio>
-
-<!-- Floating hearts generator -->
+<!-- Floating hearts -->
 <script>
 function createHeart() {
   const heart = document.createElement("div");
@@ -111,50 +114,43 @@ setInterval(createHeart, 400);
 
 <!-- SCREEN 1 -->
 <div class="screen active" id="s1">
-  <div class="cat">🐱🌸</div>
   <h2>Hi my love 💖</h2>
   <p>I got a surprise for you 🥹</p>
-  <button onclick="show('s3')">YES</button>
-  <button onclick="show('s2')">NO</button>
+  <button onclick="showYes()">YES</button>
 </div>
 
-<!-- SCREEN 2 (NO) -->
+<!-- SCREEN 2 -->
 <div class="screen" id="s2">
-  <div class="cat">😾</div>
-  <h2>HOW DARE YOU 😤</h2>
-  <button onclick="show('s1')">TRY AGAIN</button>
+  <div class="fireworks"></div>
+  <h1>🎆 Happy New Year My Love 🎆</h1>
+  <p>You make my world brighter every single day ✨</p>
+  <button onclick="showNext()">NEXT</button>
 </div>
 
-<!-- SCREEN 3 (YES) -->
+<!-- SCREEN 3 -->
 <div class="screen" id="s3">
-  <div class="cat">🐱💞</div>
-  <h1>Happy New Year My Love 🎆</h1>
-
   <p>
-    Best memories are not pictures or places,<br>
-    they are every single moment I spent with you 🥺💗
+    I miss you so much 🥺💗<br><br>
+    I hope you come back soon.<br>
+    No matter what happens, I’ll always love you.<br>
+    You are my everything, my comfort, my home 🫂✨
   </p>
 
   <p>
-    I miss you a lot, my love 🫂<br>
-    Forever yours,<br>
-    <b>Rohan 💖</b>
+    Love you so much ❤️<br>
+    Thank you, my dear <b>Pune Kutty</b> 🐾💞
   </p>
 </div>
 
 <script>
-let musicStarted = false;
-
-function startMusic() {
-  if (!musicStarted) {
-    document.getElementById("bgm").play().catch(()=>{});
-    musicStarted = true;
-  }
+function showYes() {
+  document.getElementById("s1").classList.remove("active");
+  document.getElementById("s2").classList.add("active");
 }
 
-function show(id) {
-  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
-  document.getElementById(id).classList.add('active');
+function showNext() {
+  document.getElementById("s2").classList.remove("active");
+  document.getElementById("s3").classList.add("active");
 }
 </script>
 
