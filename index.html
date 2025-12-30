@@ -2,194 +2,223 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>For My Love 💖</title>
+<title>For My Love v999</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  height: 100vh;
-  overflow: hidden;
-  background: linear-gradient(135deg, #ffdde1, #ee9ca7);
-  display: flex;
-  justify-content: center;
-  align-items: center;
+body{
+  margin:0;
+  height:100vh;
+  font-family:Arial, sans-serif;
+  background:linear-gradient(135deg,#ffd1dc,#ffeaf0);
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
 
-/* Screens */
-.screen {
-  display: none;
-  text-align: center;
-  padding: 25px;
-  animation: fadeIn 1s ease;
+/* screens */
+.screen{
+  display:none;
+  text-align:center;
+  padding:30px;
+  animation:fade 0.8s ease;
+}
+.screen.active{display:block;}
+
+@keyframes fade{
+  from{opacity:0;transform:scale(.95);}
+  to{opacity:1;transform:scale(1);}
 }
 
-.screen.active {
-  display: block;
+/* buttons */
+.buttons{
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  margin-top:20px;
+}
+button{
+  padding:12px 28px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
+/* floating hearts (shape, not emoji) */
+.heart{
+  position:fixed;
+  bottom:-20px;
+  width:14px;
+  height:14px;
+  background:#ff4d6d;
+  transform:rotate(45deg);
+  animation:float 6s linear infinite;
+  opacity:.7;
+}
+.heart:before,.heart:after{
+  content:"";
+  position:absolute;
+  width:14px;
+  height:14px;
+  background:#ff4d6d;
+  border-radius:50%;
+}
+.heart:before{top:-7px;left:0;}
+.heart:after{left:-7px;top:0;}
+
+@keyframes float{
+  0%{transform:translateY(0) rotate(45deg);opacity:0;}
+  10%{opacity:1;}
+  100%{transform:translateY(-110vh) rotate(45deg);opacity:0;}
 }
 
-/* Buttons */
-button {
-  padding: 12px 30px;
-  margin-top: 20px;
-  border: none;
-  border-radius: 30px;
-  background: #ff4d6d;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #e6004c;
-}
-
-/* Hearts */
-.heart {
-  position: fixed;
-  bottom: -20px;
-  font-size: 18px;
-  animation: floatUp 6s linear infinite;
-  opacity: 0.8;
-}
-
-@keyframes floatUp {
-  0% { transform: translateY(0); opacity: 0; }
-  10% { opacity: 1; }
-  100% { transform: translateY(-110vh); opacity: 0; }
-}
-
-/* Fireworks background */
-.fireworks {
-  position: fixed;
-  inset: 0;
+/* fireworks */
+.fireworks{
+  position:fixed;
+  inset:0;
   background:
-    radial-gradient(circle, rgba(255,255,255,0.7) 2px, transparent 3px),
-    radial-gradient(circle, rgba(255,215,0,0.8) 2px, transparent 3px),
-    radial-gradient(circle, rgba(255,0,120,0.7) 2px, transparent 3px);
-  background-size: 80px 80px;
-  animation: fireworks 4s linear infinite;
-  z-index: -1;
+   radial-gradient(circle,#fff 2px,transparent 3px),
+   radial-gradient(circle,#ffd700 2px,transparent 3px),
+   radial-gradient(circle,#ff4d6d 2px,transparent 3px);
+  background-size:90px 90px;
+  animation:boom 4s linear infinite;
+  z-index:-1;
+}
+@keyframes boom{
+  from{background-position:0 0,30px 30px,60px 60px;}
+  to{background-position:400px 400px,430px 430px,460px 460px;}
 }
 
-@keyframes fireworks {
-  from { background-position: 0 0, 40px 40px, 80px 80px; }
-  to { background-position: 400px 400px, 440px 440px, 480px 480px; }
+/* animated cat (CSS) */
+.cat{
+  width:120px;
+  height:80px;
+  background:#333;
+  border-radius:40px;
+  margin:0 auto 20px;
+  position:relative;
+  animation:bounce 1.6s infinite;
+}
+.cat:before,.cat:after{
+  content:"";
+  position:absolute;
+  width:30px;height:30px;
+  background:#333;
+  top:-15px;
+  border-radius:6px;
+}
+.cat:before{left:15px;}
+.cat:after{right:15px;}
+
+@keyframes bounce{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-10px);}
 }
 
-/* Emojis */
-.cat {
-  font-size: 90px;
-  animation: bounce 1.6s infinite;
+/* couple */
+.couple{
+  width:160px;
+  height:80px;
+  margin:25px auto;
+  position:relative;
+}
+.couple div{
+  width:70px;
+  height:70px;
+  background:#444;
+  border-radius:50%;
+  position:absolute;
+  animation:cuddle 2s infinite;
+}
+.couple .a{left:0;}
+.couple .b{right:0;}
+
+@keyframes cuddle{
+  0%,100%{transform:translateX(0);}
+  50%{transform:translateX(6px);}
 }
 
-.couple {
-  font-size: 90px;
-  animation: cuddle 2s infinite;
-}
-
-@keyframes bounce {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
-}
-
-@keyframes cuddle {
-  0%,100% { transform: scale(1); }
-  50% { transform: scale(1.1); }
-}
-
-h1, h2 {
-  color: #b8004c;
-}
-
-p {
-  color: #333;
-  font-size: 16px;
-  line-height: 1.7;
-}
+h1,h2{color:#b8004c;}
+p{color:#333;line-height:1.7;}
 </style>
 </head>
 
-<body onclick="startMusic()">
+<body>
 
-<!-- Background Music -->
 <audio id="bgm" loop>
-  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0c4b6bb3d3.mp3" type="audio/mpeg">
+ <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0c4b6bb3d3.mp3" type="audio/mpeg">
 </audio>
 
-<!-- Floating hearts -->
 <script>
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "💗";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (Math.random() * 20 + 14) + "px";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 6000);
+/* hearts */
+setInterval(()=>{
+ let h=document.createElement("div");
+ h.className="heart";
+ h.style.left=Math.random()*100+"vw";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
+},450);
+
+function playMusic(){
+ document.getElementById("bgm").play().catch(()=>{});
 }
-setInterval(createHeart, 400);
+
+function show(id){
+ document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+ document.getElementById(id).classList.add('active');
+}
 </script>
 
 <!-- SCREEN 1 -->
 <div class="screen active" id="s1">
-  <div class="cat">🐱🌸</div>
-  <h2>Hi my love 💖</h2>
-  <p>I got a surprise for you 🥹</p>
-  <button onclick="showYes()">YES</button>
+ <div class="cat"></div>
+ <h2>Hi my love</h2>
+ <p>I got a surprise for you</p>
+
+ <div class="buttons">
+   <button onclick="playMusic();show('s2')">YES</button>
+   <button onclick="show('sNo')">NO</button>
+ </div>
+</div>
+
+<!-- SCREEN NO -->
+<div class="screen" id="sNo">
+ <div class="cat"></div>
+ <h2>How dare you 😤</h2>
+ <button onclick="show('s1')">Try Again</button>
 </div>
 
 <!-- SCREEN 2 -->
 <div class="screen" id="s2">
-  <div class="fireworks"></div>
-  <h1>🎆 Happy New Year My Love 🎆</h1>
-  <p>You are the best thing that ever happened to me ✨</p>
-  <button onclick="showNext()">NEXT</button>
+ <div class="fireworks"></div>
+ <h1>Happy New Year My Love</h1>
+ <p>You make my life brighter every day</p>
+ <button onclick="show('s3')">NEXT</button>
 </div>
 
 <!-- SCREEN 3 -->
 <div class="screen" id="s3">
-  <p>
-    I miss you so much 🥺💗<br><br>
-    I hope you come back soon.<br>
-    No matter what happens, I will always love you.<br>
-    You are my everything, my comfort, my home 🫂✨
-  </p>
+ <p>
+   I miss you so much.<br>
+   I hope you come back soon.<br>
+   I will always love you.<br>
+   You are my everything.
+ </p>
 
-  <div class="couple">💑🫂</div>
+ <div class="couple">
+   <div class="a"></div>
+   <div class="b"></div>
+ </div>
 
-  <p>
-    Love you so much ❤️<br>
-    Thank you, my dear <b>Pune Kutty</b> 🐾💞
-  </p>
+ <p>
+   <b>Love you so much</b><br>
+   Thank you my dear <b>Pune Kutty</b>
+ </p>
 </div>
-
-<script>
-let musicStarted = false;
-
-function startMusic() {
-  if (!musicStarted) {
-    document.getElementById("bgm").play().catch(()=>{});
-    musicStarted = true;
-  }
-}
-
-function showYes() {
-  document.getElementById("s1").classList.remove("active");
-  document.getElementById("s2").classList.add("active");
-}
-
-function showNext() {
-  document.getElementById("s2").classList.remove("active");
-  document.getElementById("s3").classList.add("active");
-}
-</script>
 
 </body>
 </html>
